@@ -7,7 +7,13 @@ services:
     ports:
       - "6379:6379"
     command: redis-server --appendonly yes
-
+  redis-insight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
   spring-app:
     build:
       context: .
